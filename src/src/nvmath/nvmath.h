@@ -84,13 +84,15 @@ inline float asinf_assert(const float f)
 	return asinf(f);
 }
 
-// Replace default functions with asserting ones.
-#define sqrt sqrt_assert
-#define sqrtf sqrtf_assert
-#define acos acos_assert
-#define acosf acosf_assert
-#define asin asin_assert
-#define asinf asinf_assert
+#if ! defined(_MSC_VER) || (defined(_MSC_VER) && (_MSC_VER<1700))
+    // Replace default functions with asserting ones.
+    #define sqrt sqrt_assert
+    #define sqrtf sqrtf_assert
+    #define acos acos_assert
+    #define acosf acosf_assert
+    #define asin asin_assert
+    #define asinf asinf_assert
+#endif
 
 #if NV_OS_WIN32
 #include <float.h>
