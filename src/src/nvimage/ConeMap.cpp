@@ -79,7 +79,7 @@ static float processPixel(const FloatImage * img, uint x, uint y)
 		float dy = float(best_y - y) / h;
 		
 		float cw = sqrtf(dx*dx + dy*dy);
-		float ch = d - img->pixel(xx, yy, 0);
+		float ch = d - img->pixel(best_x, best_y, 0);
 		
 		return min(1, sqrtf(cw / ch));
 	}
